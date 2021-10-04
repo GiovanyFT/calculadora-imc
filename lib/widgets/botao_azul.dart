@@ -17,8 +17,12 @@ class BotaoAzul extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      color: Colors.blue,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.blue,
+        shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(10.0)),
+      ),
       child: Text(
         texto,
         style: TextStyle(
@@ -27,10 +31,6 @@ class BotaoAzul extends StatelessWidget {
         )
       ),
       onPressed: ao_clicar,
-      shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0),
-    //      side: BorderSide(color: Colors.white)
-      ),
       focusNode: marcador_foco,
     );
   }
