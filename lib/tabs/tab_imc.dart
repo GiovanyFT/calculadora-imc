@@ -121,7 +121,7 @@ class _TabIMCState extends State<TabIMC> {
       return imc;
     } on FormatException catch (erro) {
       // O ScnackBar precisa de um context definido dentro do Scaffold
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Erro: $erro"),
           duration: Duration(seconds: 5),
