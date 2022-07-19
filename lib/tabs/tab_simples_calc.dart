@@ -3,7 +3,7 @@ import 'package:calculadoraimcflutter/widgets/controlador_linha_conta.dart';
 import 'package:calculadoraimcflutter/widgets/linha_conta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ftoast/ftoast.dart';
 
 class TabSimplesCalc extends StatefulWidget {
   @override
@@ -36,17 +36,17 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
                         ),
                       );
                     } else {
-                      /*Fluttertoast.showToast(
-                          msg: "Você deve terminar a operação anterior ( clicar em '=' ) ",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 5,
-                          backgroundColor: Colors.red,
-                          textColor: Colors.white,
-                          fontSize: 16.0
-                      );
-                      */
+                      FToast.toast(
+                        context,
+                        msg: "Você deve terminar a operação anterior ( clicar em '=' ) ",
+                        color: Colors.red ,
+                        duration: 5000,
+                        msgStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                        ),
 
+                      );
                     }
                   });
                 },
