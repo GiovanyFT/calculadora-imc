@@ -2,7 +2,7 @@ import 'package:calculadoraimcflutter/widgets/botao_azul.dart';
 import 'package:calculadoraimcflutter/widgets/controlador_linha_conta.dart';
 import 'package:calculadoraimcflutter/widgets/seletor_opcoes.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 
 import 'campo_edicao_double.dart';
 
@@ -176,7 +176,7 @@ class _LinhaContaState extends State<LinhaConta> {
   }
 
   _makeToast(String mensagem){
-    Fluttertoast.showToast(
+    /*Fluttertoast.showToast(
       msg: "Erro: $mensagem",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
@@ -185,5 +185,7 @@ class _LinhaContaState extends State<LinhaConta> {
       textColor: Colors.white,
       fontSize: 16.0,
     );
+    */
+     
   }
 }

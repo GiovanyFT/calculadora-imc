@@ -4,13 +4,20 @@
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
-         FlutterApplication and put your custom class here. -->
+         FlutterApplication and put your custom class here.
+
+         android:name="io.flutter.app.FlutterApplication" mudou para
+         android:name="${applicationName}"
+         https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects
+         -->
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:label="calculadoraimcflutter"
         android:icon="@mipmap/ic_launcher">
+        <!-- .MainActivity não é mais necessário por isso foi trocado por io.flutter.embedding.android.FlutterActivity
+         https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects -->
         <activity
-            android:name=".MainActivity"
+            android:name="io.flutter.embedding.android.FlutterActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
