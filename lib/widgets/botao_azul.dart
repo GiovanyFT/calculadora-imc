@@ -4,7 +4,7 @@ class BotaoAzul extends StatelessWidget {
   String texto;
   double tamanho_fonte;
   Color cor_fonte;
-  void Function() ao_clicar;
+  VoidCallback? ao_clicar;
   FocusNode? marcador_foco;
 
   BotaoAzul({
