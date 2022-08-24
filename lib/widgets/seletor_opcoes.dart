@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
 class SeletorOpcoes extends StatefulWidget {
-  List<String> opcoes;
-  Icon icone = Icon(Icons.arrow_drop_down);
-  String valor_selecionado;
-  Function ao_mudar_opcao;
+  List<String>? opcoes;
+  Icon? icone ;
+  String? valor_selecionado;
+  Function? ao_mudar_opcao;
 
   SeletorOpcoes({
-    Key key,
-    @required this.opcoes,
-    this.icone, this.valor_selecionado,
-    this.ao_mudar_opcao}): super(key: key);
+    Key? key,
+    this.opcoes,
+    this.icone,
+    this.valor_selecionado,
+    this.ao_mudar_opcao
+  }): super(key: key){
+    if(this.opcoes == null) this.opcoes = <String>[];
+    if(this.icone == null) this.icone = Icon(Icons.arrow_drop_down);
+
+  }
 
   _SeletorOpcoesState createState() => _SeletorOpcoesState();
 
@@ -28,16 +34,17 @@ class _SeletorOpcoesState extends State<SeletorOpcoes> {
         height: 2,
         color: Colors.blueAccent,
       ),
-      items : widget.opcoes.map((String dropDownStringItem) {
+      items : widget.opcoes!.map((String dropDownStringItem) {
         return DropdownMenuItem<String>(
           value: dropDownStringItem,
           child: Text(dropDownStringItem),
         );
       }).toList(),
-      onChanged: ( String novoItemSelecionado) {
+      onChanged: (String? novoItemSelecionado) {
         setState(() {
           widget.valor_selecionado = novoItemSelecionado;
-          widget.ao_mudar_opcao(novoItemSelecionado);
+          if(widget.ao_mudar_opcao != null)
+            widget.ao_mudar_opcao!(novoItemSelecionado);
         });
       },
     );

@@ -11,8 +11,8 @@ class LinhaConta extends StatefulWidget {
   ControladorLinhaConta controladorLinhaConta;
 
   LinhaConta({
-    Key key,
-    @required this.controladorLinhaConta}): super(key: key);
+    Key? key,
+    required this.controladorLinhaConta}): super(key: key);
 
   @override
   _LinhaContaState createState() => _LinhaContaState();
@@ -85,7 +85,8 @@ class _LinhaContaState extends State<LinhaConta> {
                 texto_label: "Valor 2",
                 marcador_foco: _focoValor2,
                 recebedor_foco: _focoBotaoIgual,
-                validador: (String text){
+                validador: (String? text){
+                  if(text == null) return null;
                   if((text.isEmpty) || (text.trim().isEmpty))
                     return "Não preenchido";
                   try{
@@ -109,7 +110,7 @@ class _LinhaContaState extends State<LinhaConta> {
                 ao_clicar: (){
                   setState(() {
                     // Chamando os validadores dos campos de edição
-                    bool formOk = _formkey.currentState.validate();
+                    bool formOk = _formkey.currentState!.validate();
                     if (formOk) {
                       _executarOperacao();
                       if (resultado_ja_adicionado) {
@@ -152,7 +153,7 @@ class _LinhaContaState extends State<LinhaConta> {
     try{
       double valor1 = double.parse(controladorValor1.text);
       double valor2 = double.parse(controladorValor2.text);
-      double resultado;
+      double resultado = 0;
       switch(_operacao_selecionada){
         case "+":
           resultado = valor1 + valor2;

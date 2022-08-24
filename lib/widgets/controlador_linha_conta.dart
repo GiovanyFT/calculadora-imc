@@ -1,10 +1,10 @@
 
 
 class ControladorLinhaConta{
-  List<String> resultados;
+  late List<String> resultados;
 
   ControladorLinhaConta(){
-    resultados = List<String>();
+    resultados = <String>[];
   }
 
   void adicionarNovoResultado(String resultado){

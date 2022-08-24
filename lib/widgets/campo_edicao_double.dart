@@ -5,17 +5,17 @@ class CampoEdicaoDouble extends StatelessWidget {
   String texto_label;
   String texto_dica;
   bool password;
-  TextEditingController controlador;
-  FormFieldValidator<String> validador;
-  TextInputType teclado;
-  FocusNode marcador_foco;
-  FocusNode recebedor_foco;
+  TextEditingController? controlador;
+  FormFieldValidator<String>? validador;
+  TextInputType? teclado;
+  FocusNode? marcador_foco;
+  FocusNode? recebedor_foco;
   TextAlign alinhamento;
 
 
   CampoEdicaoDouble({
-      this.texto_label,
-      this.texto_dica,
+      this.texto_label = "",
+      this.texto_dica = "",
       this.password = false,
       this.controlador = null,
       this.validador = null,
@@ -24,19 +24,20 @@ class CampoEdicaoDouble extends StatelessWidget {
       this.alinhamento = TextAlign.center}){
     
       if (this.validador == null){
-        validador = (String text){
+        validador = (String? text){
+          if (text == null) return "Não preenchido";
           if((text.isEmpty) || (text.trim().isEmpty))
             return "Não preenchido";
           try{
             // Validando se consegue converter para número
-            double.parse(controlador.text);
+            double.parse(controlador!.text);
             // Return null significa que a validação respondeu
             // ok!!!
             return null;
           }on FormatException{
             return "Digite um número";
           }
-        };        
+        };
       }
   }
 
@@ -67,10 +68,10 @@ class CampoEdicaoDouble extends StatelessWidget {
           color: Colors.black12,
         ),
         labelText: texto_label,
-  //      labelStyle: TextStyle(
-  //        fontSize: 15,
-  //        color: Colors.grey,
-  //      ),
+        labelStyle: TextStyle(
+          fontSize: 15,
+          color: Colors.grey,
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ class TabSimplesCalc extends StatefulWidget {
 }
 
 class _TabSimplesCalcState extends State<TabSimplesCalc> {
-  List<Widget> linhas;
+  List<Widget>? linhas;
   ControladorLinhaConta controlador = ControladorLinhaConta();
 
   List<Widget> _linhas() {
@@ -29,8 +29,8 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
                   setState(() {
                     // Condição para evitar que o botão de + acione novas linhas sem que
                     // já tenhamos resultados das linhas anteriores
-                    if ((linhas.length-1) == controlador.obterQuantidadeResultados()) {
-                      linhas.add(
+                    if ((linhas!.length-1) == controlador.obterQuantidadeResultados()) {
+                      linhas!.add(
                         LinhaConta(
                           controladorLinhaConta: controlador,
                         ),
@@ -58,11 +58,11 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
                 texto: "-",
                 ao_clicar: () {
                   setState(() {
-                    linhas.removeLast();
+                    linhas!.removeLast();
                     // Posso ter clicado ou não no operador "=" da LinhaConta
                     // se foi clicado a linha já tem valor no controlador, caso contrário não
                     // por isso se faz necessária essa validação
-                    if (linhas.length ==
+                    if (linhas!.length ==
                         controlador.obterQuantidadeResultados())
                       controlador.removerUltimoResultado();
                   });
@@ -74,7 +74,7 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
         LinhaConta(controladorLinhaConta: controlador),
       ];
     }
-    return linhas;
+    return linhas!;
   }
 
   @override

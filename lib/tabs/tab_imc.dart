@@ -58,7 +58,7 @@ class _TabIMCState extends State<TabIMC> {
               texto: "Calcular",
               ao_clicar: () {
                 setState(() {
-                  double imc = _calcularIMC();
+                  double? imc = _calcularIMC();
                   if(imc == null) {
                     valor_imc = "";
                     situacao_imc = "";
@@ -113,7 +113,7 @@ class _TabIMCState extends State<TabIMC> {
       return "Obesidade grau 3";
   }
 
-  double _calcularIMC() {
+  double? _calcularIMC() {
     try {
       double altura = double.parse(controladorAltura.text);
       double peso = double.parse(controladorPeso.text);
