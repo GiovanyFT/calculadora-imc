@@ -45,7 +45,6 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
                             color: Colors.white,
                             fontSize: 16.0,
                         ),
-
                       );
                     }
                   });
