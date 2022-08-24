@@ -131,7 +131,8 @@ class _TabIMCState extends State<TabIMC> {
             onPressed: () {
               setState(() {
                 _reinicializarCampos();
-              });            },
+              });
+            },
           ),
         ),
       );
