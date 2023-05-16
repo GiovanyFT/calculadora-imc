@@ -17,7 +17,8 @@
         <!-- .MainActivity não é mais necessário por isso foi trocado por io.flutter.embedding.android.FlutterActivity
          https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects -->
         <activity
-            android:name="io.flutter.embedding.android.FlutterActivity"
+            android:name=".MainActivity"
+            android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
