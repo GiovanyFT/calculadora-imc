@@ -2,9 +2,9 @@ import 'package:calculadoraimcflutter/tabs/tab_imc.dart';
 import 'package:calculadoraimcflutter/tabs/tab_simples_calc.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(CalculadoraIMC());
+void main() => runApp(Calculadora());
 
-class CalculadoraIMC extends StatelessWidget {
+class Calculadora extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,10 +28,16 @@ class HomePage extends StatelessWidget {
           title: Text("Calculadora"),
           bottom: TabBar(
             tabs: <Widget>[
-              Tab(
-                text: "IMC",
+              Tab(child: Text("IMC",
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),
+                )
               ),
-              Tab(text: "Simples Calc"),
+              Tab(
+                text: "Simples Calc",
+                icon: Icon(Icons.calculate),
+              ),
             ],
           ),
         ),
