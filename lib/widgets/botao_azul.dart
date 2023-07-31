@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BotaoAzul extends StatelessWidget {
-  String texto;
-  double tamanho_fonte;
-  Color cor_fonte;
-  VoidCallback? ao_clicar;
-  FocusNode? marcador_foco;
+  final String texto;
+  final double tamanho_fonte;
+  final Color cor_fonte;
+  final VoidCallback? ao_clicar;
+  final FocusNode? marcador_foco;
 
   BotaoAzul({
         this.texto = "",
@@ -19,7 +19,7 @@ class BotaoAzul extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.blue,
+        backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(10.0)),
       ),
