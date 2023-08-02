@@ -17,9 +17,7 @@ class SeletorOpcoes extends StatefulWidget {
     if(this.icone == null) this.icone = Icon(Icons.arrow_drop_down);
 
   }
-
   _SeletorOpcoesState createState() => _SeletorOpcoesState();
-
 }
 
 class _SeletorOpcoesState extends State<SeletorOpcoes> {
