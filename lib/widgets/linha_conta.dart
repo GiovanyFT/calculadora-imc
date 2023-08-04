@@ -20,13 +20,13 @@ class LinhaConta extends StatefulWidget {
 
 class _LinhaContaState extends State<LinhaConta> {
   // Controladores para os campos de edição
-  final controladorValor1 = TextEditingController();
-  final controladorValor2 = TextEditingController();
+  final _controladorValor1 = TextEditingController();
+  final _controladorValor2 = TextEditingController();
 
   // Boolenao para informar se já foi executada a operação de "=",
   // isso serve para sabermos se é para modificar uma gravação de resultado anterior
   // ou gerar um novo resultado
-  bool resultado_ja_adicionado = false;
+  bool _resultado_ja_adicionado = false;
 
   // Dados para o DropdownButton
   var _operacoes = ["+", "-", "x", "/"];
@@ -58,7 +58,7 @@ class _LinhaContaState extends State<LinhaConta> {
               // Peso desse componente (como no Android)
               flex: 3,
               child: CampoEdicaoDouble(
-                controlador: controladorValor1,
+                controlador: _controladorValor1,
                 texto_label: "Valor 1",
                 recebedor_foco: _focoValor2,
               ),
@@ -81,7 +81,7 @@ class _LinhaContaState extends State<LinhaConta> {
               // Peso desse componente (como no Android)
               flex: 3,
               child: CampoEdicaoDouble(
-                controlador: controladorValor2,
+                controlador: _controladorValor2,
                 texto_label: "Valor 2",
                 marcador_foco: _focoValor2,
                 recebedor_foco: _focoBotaoIgual,
@@ -90,7 +90,7 @@ class _LinhaContaState extends State<LinhaConta> {
                   if((text.isEmpty) || (text.trim().isEmpty))
                     return "Não preenchido";
                   try{
-                    double valor2 = double.parse(controladorValor2.text);
+                    double valor2 = double.parse(_controladorValor2.text);
                     if ((_operacao_selecionada == "/") && (valor2 == 0)) {
                       _makeToast("Não é possível dividir por 0");
                       return "Divisão por 0";
@@ -113,13 +113,13 @@ class _LinhaContaState extends State<LinhaConta> {
                     bool formOk = _formkey.currentState!.validate();
                     if (formOk) {
                       _executarOperacao();
-                      if (resultado_ja_adicionado) {
+                      if (_resultado_ja_adicionado) {
                         widget.controladorLinhaConta.modificarUltimoResultado(
                             _resultado);
                       } else {
                         widget.controladorLinhaConta.adicionarNovoResultado(
                             _resultado);
-                        resultado_ja_adicionado = true;
+                        _resultado_ja_adicionado = true;
                       }
                     }
                   });
@@ -146,13 +146,13 @@ class _LinhaContaState extends State<LinhaConta> {
   void _inicializarValor1() {
     if ((widget.controladorLinhaConta.obterQuantidadeResultados() > 0) &&
         (_resultado == ""))
-      controladorValor1.text = widget.controladorLinhaConta.obterUltimoResultado();
+      _controladorValor1.text = widget.controladorLinhaConta.obterUltimoResultado();
   }
 
   void _executarOperacao() {
     try{
-      double valor1 = double.parse(controladorValor1.text);
-      double valor2 = double.parse(controladorValor2.text);
+      double valor1 = double.parse(_controladorValor1.text);
+      double valor2 = double.parse(_controladorValor2.text);
       double resultado = 0;
       switch(_operacao_selecionada){
         case "+":
