@@ -11,12 +11,12 @@ class TabSimplesCalc extends StatefulWidget {
 }
 
 class _TabSimplesCalcState extends State<TabSimplesCalc> {
-  List<Widget>? linhas;
-  ControladorLinhaConta controlador = ControladorLinhaConta();
+  List<Widget>? _linhas;
+  ControladorLinhaConta _controlador = ControladorLinhaConta();
 
-  List<Widget> _linhas() {
-    if (linhas == null) {
-      linhas = <Widget>[
+  List<Widget> _body() {
+    if (_linhas == null) {
+      _linhas = <Widget>[
         Container(
           color: Colors.redAccent,
           padding: EdgeInsets.only(right: 5),
@@ -29,10 +29,10 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
                   setState(() {
                     // Condição para evitar que o botão de + acione novas linhas sem que
                     // já tenhamos resultados das linhas anteriores
-                    if ((linhas!.length-1) == controlador.obterQuantidadeResultados()) {
-                      linhas!.add(
+                    if ((_linhas!.length-1) == _controlador.obterQuantidadeResultados()) {
+                      _linhas!.add(
                         LinhaConta(
-                          controladorLinhaConta: controlador,
+                          controladorLinhaConta: _controlador,
                         ),
                       );
                     } else {
@@ -57,23 +57,23 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
                 texto: "-",
                 ao_clicar: () {
                   setState(() {
-                    linhas!.removeLast();
+                    _linhas!.removeLast();
                     // Posso ter clicado ou não no operador "=" da LinhaConta
                     // se foi clicado a linha já tem valor no controlador, caso contrário não
                     // por isso se faz necessária essa validação
-                    if (linhas!.length ==
-                        controlador.obterQuantidadeResultados())
-                      controlador.removerUltimoResultado();
+                    if (_linhas!.length ==
+                        _controlador.obterQuantidadeResultados())
+                      _controlador.removerUltimoResultado();
                   });
                 },
               ),
             ],
           ),
         ),
-        LinhaConta(controladorLinhaConta: controlador),
+        LinhaConta(controladorLinhaConta: _controlador),
       ];
     }
-    return linhas!;
+    return _linhas!;
   }
 
   @override
@@ -85,7 +85,7 @@ class _TabSimplesCalcState extends State<TabSimplesCalc> {
         // No eixo y (principal da coluna) vai colocar
         // os objetos no topo
         mainAxisAlignment: MainAxisAlignment.start,
-        children: _linhas(),
+        children: _body(),
       ),
     );
   }
